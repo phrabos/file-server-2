@@ -6,18 +6,8 @@ describe('app routes', () => {
   it('should send html body', async () => {
     const res = await request(app)
       .get('/index.html')
-    expect(res.text).toEqual(`<!DOCTYPE html>
-<html lang='en'>
-<head>
-  <meta charset='UTF-8'>
-  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <title>Server-Side Rendering</title>
-</head>
-<body>
-  <h1 id='header'>You are seeing this because the server successfully sent the .html file in its response</h1>
-</body>
-</html>`);
+    const fsRead = await fs.readFile('/home/ph/Alchemy/file-server/lib/index.html', 'utf-8')
+    expect(res.text).toEqual(fsRead);
   })
 
   it('should return Not Valid Endpoint', async () => {
