@@ -6,8 +6,8 @@ describe('app routes', () => {
   it('should send html body', async () => {
     const res = await request(app)
       .get('/index.html')
-    const fsRead = await fs.readFile('/home/ph/Alchemy/file-server/lib/index.html', 'utf-8')
-    expect(res.text).toEqual(fsRead);
+   
+    expect(res.text).toEqual('<body><h1>hi</h1></body>');
   })
 
   it('should return Not Valid Endpoint', async () => {
